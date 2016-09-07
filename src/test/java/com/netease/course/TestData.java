@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 import com.netease.SpringJDBC.JdbcTemplateDao;
 import com.netease.SpringJDBC.JdbcTemplateDaoImp;
 import com.netease.SpringJDBC.Users;
+import com.netease.mybatis.MybatisUserDao;
 import com.netease.tx.Account;
 import com.netease.tx.AccountDao;
 
@@ -65,7 +66,7 @@ public class TestData {
 	}
 
 	@Test
-	public void TestTx() {
+	public void TestTx() { 
 		ApplicationContext applicationContext = xmlTool.open();
 		AccountDao accountDao = applicationContext.getBean("accountDaoImp", AccountDao.class);
 		accountDao.resetMoney();
@@ -81,4 +82,40 @@ public class TestData {
 		}
 		xmlTool.close(applicationContext);
 	}
+	
+	@Test
+	public void TestMybatis(){
+		ApplicationContext applicationContext = xmlTool.open();
+		MybatisUserDao mybatisUserDao = applicationContext.getBean("mybatisUserDao",MybatisUserDao.class);
+		
+		List<Users> users = mybatisUserDao.getUsers();
+		
+		for(Users user : users){
+			System.out.println(user.getFirstName()+" " + user.getLastName());
+		}
+		String string = mybatisUserDao.getUser("Lei").toString();
+		System.out.println("------------------");
+		System.out.println(string);
+		xmlTool.close(applicationContext);
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
