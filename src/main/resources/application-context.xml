@@ -4,13 +4,16 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-   	   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+   	   http://www.springframework.org/schema/beans/spring-beans.xsd
    	   http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+<context:component-scan base-package="com.netease.*"></context:component-scan>
+
 	<bean id="screwDriver" class="com.netease.course.ScrewDriver"
 		init-method="init" destroy-method="cleanup">
 		<constructor-arg>
-			<ref bean="header"/>
+			<ref bean="header" />
 		</constructor-arg>
 	</bean>
 	<bean id="header" class="com.netease.course.StraightHeader">
@@ -21,5 +24,15 @@
 			</map>
 		</constructor-arg>
 	</bean>
-
+	
+	
+	<!-- Spring JDBC -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${DRIVER}"></property>
+		<property name="url" value="${DB_URL}"></property>
+		<property name="username" value="${username}"></property>
+		<property name="password" value="${PASSWORD}"></property>
+	</bean>
+	<context:property-placeholder location="db.properties"/>
 </beans>
