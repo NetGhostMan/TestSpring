@@ -1,10 +1,10 @@
-package com.netease.Tool;
+package com.netease.course;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.netease.SpringJDBC.JdbcTemplateDao;
+import com.netease.SpringJDBC.JdbcTemplateDaoImp;
 
 public class xmlTool {
 	public static ApplicationContext open() {
@@ -12,8 +12,8 @@ public class xmlTool {
 		return applicationContext;
 	}
 
-	public static JdbcTemplateDao getJdbc(ApplicationContext applicationContext) {
-		return applicationContext.getBean("jdbcTemplateDao", JdbcTemplateDao.class);
+	public static JdbcTemplateDaoImp getJdbc(ApplicationContext applicationContext) {
+		return applicationContext.getBean("jdbcTemplateDao", JdbcTemplateDaoImp.class);
 	}
 
 	public static void close(ApplicationContext applicationContext) {

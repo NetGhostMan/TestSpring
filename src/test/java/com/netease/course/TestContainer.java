@@ -2,8 +2,6 @@ package com.netease.course;
 
 import org.springframework.context.ApplicationContext;
 
-import com.netease.Tool.xmlTool;
-
 public class TestContainer {
 
 	public static void main(String[] args) {
