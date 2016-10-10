@@ -11,11 +11,13 @@ public class Application {
 	FileWriterService fileWriterService;
 
 	public static void main(String[] args) {
+		Application application = new Application();
+		
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-file.xml");
-		FileWriterService fileWriterService = applicationContext.getBean("FileWriterService",
+		application.fileWriterService = applicationContext.getBean("FileWriterService",
 				FileWriterService.class);
 
-		fileWriterService.write("而是地方");
+		application.fileWriterService.write("而是地方");
 
 		((ConfigurableApplicationContext) applicationContext).close();
 	}

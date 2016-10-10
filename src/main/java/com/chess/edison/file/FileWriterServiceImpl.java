@@ -36,7 +36,7 @@ public class FileWriterServiceImpl implements FileWriterService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		System.out.println("服务已开启");
 	}
 
 	@PreDestroy
@@ -56,7 +56,7 @@ public class FileWriterServiceImpl implements FileWriterService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		System.out.println("服务已关闭");
 	}
 
 	@Override

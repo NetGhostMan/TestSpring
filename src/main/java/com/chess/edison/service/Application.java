@@ -29,7 +29,8 @@ public class Application {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-service.xml");
-		Application application = applicationContext.getBean("Application",Application.class);
+//		Application application = applicationContext.getBean("Application",Application.class);
+		Application application = new Application();
 		
 		application.doService();
 		
