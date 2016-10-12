@@ -1,11 +1,10 @@
 package com.chess.edison.service;
 
-public interface ServiceTwo {
-	public void select();
+import org.springframework.stereotype.Component;
 
-	public void insert();
-
-	public void updata();
-
-	public void delete();
+@Component
+public class ServiceTwo {
+	public void into() {
+		System.out.println("service two into");
+	}
 }

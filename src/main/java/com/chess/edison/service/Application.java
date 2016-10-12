@@ -10,30 +10,20 @@ import org.springframework.stereotype.Component;
 public class Application {
 
 	@Autowired
-	private ServiceOne serviceOne;
+	ServiceOne serviceOne;
 	@Autowired
-	private ServiceTwo serviceTwo;
-	@Autowired
-	private ServiceThree serviceThree;
-	@Autowired
-	private ServiceFour serviceFour;
-
-	public void doService(){
-		int a = 12;
-		serviceOne.select(a);
-		serviceTwo.insert();
-		serviceThree.insert();
-		serviceFour.insert();
-	}
+	ServiceTwo serviceTwo;
 	
+	public void doService() {
+		serviceOne.into();
+		serviceTwo.into();
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-service.xml");
-//		Application application = applicationContext.getBean("Application",Application.class);
-		Application application = new Application();
-		
+		Application application = applicationContext.getBean("Application", Application.class);
 		application.doService();
-		
 		((ConfigurableApplicationContext)applicationContext).close();
 	}
 
