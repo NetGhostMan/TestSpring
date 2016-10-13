@@ -4,7 +4,23 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ServiceOne {
-public void into() {
-	System.out.println("service one into");
-}
+	
+	//ServiceOne into 方法正常返回。
+	public void into() {
+		System.out.println("方法：服务1 的增加功能执行了。");
+	}
+	//select 有返回值的
+	public int select() {
+		System.out.println("方法：服务1 的查询功能执行了");
+		return 12;
+	}
+	// 有参数的方法
+	public void delete(int id) {
+		System.out.println("方法：服务1 删除了Id='"+id+"'的值。");
+	}
+	//有异常的方法
+	public void update() throws Exception {
+		System.out.println("方法：服务1 开始修改记录");
+		throw new Exception("服务1 修改失败了");
+	}
 }
