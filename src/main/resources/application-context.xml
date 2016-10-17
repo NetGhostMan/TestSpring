@@ -65,7 +65,7 @@
 		destroy-method="close">
 		<property name="driverClassName" value="${DRIVER}"></property>
 		<property name="url" value="${DB_URL}"></property>
-		<property name="username" value="${username}"></property>
+		<property name="username" value="${USER}"></property>
 		<property name="password" value="${PASSWORD}"></property>
 	</bean>
 	<context:property-placeholder location="db.properties" />

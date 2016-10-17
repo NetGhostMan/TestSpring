@@ -19,10 +19,7 @@ public class JdbcTemplateDaoImp implements JdbcTemplateDao {
 	private JdbcTemplate jdbcTemplate;
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-	// @Autowired
-	// public void setDataSource(DataSource dataSource) {
-	// this.jdbcTemplate = new JdbcTemplate(dataSource);
-	// }
+ 
 	@Autowired
 	@Override
 	public void setDataSource(DataSource dataSource) {
