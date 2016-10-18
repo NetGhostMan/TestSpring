@@ -32,7 +32,7 @@ public class JdbcTemplateDaoImp implements JdbcTemplateDao {
 		jdbcTemplate.execute(sql);
 	}
 
-	public void insertData() {
+	 public void insertData() {
 		int id = 1;
 		String sql = "insert into users values (" + id + ",?,?)";
 		this.jdbcTemplate.update(sql, "Meimei", "Han");

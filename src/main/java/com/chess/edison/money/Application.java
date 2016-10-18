@@ -4,25 +4,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
+@Component("Application")
 public class Application {
 
 	@Autowired
 	TransferDAO springJDBCImpl;
+	@Autowired
+	TransferDAO mybatisSpringImpl;
 
-	
-	public void doTransfer(){
-		Long userId = 001L;
-		Long argetUserId = 002L;
-		Double count = 3.14;
-		springJDBCImpl.transferMoney(userId,argetUserId,count);
+	public void doTransfer() {
+		Long userId = 1L;
+		Long argetUserId = 2L;
+		Double count = 2000.00;
+		springJDBCImpl.transferMoney(userId, argetUserId, count);
+		//mybatisSpringImpl.transferMoney(userId, argetUserId, count);
 	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicatin-money.xml");
-		Application application = applicationContext.getBean("Application",Application.class);
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-money.xml");
+		Application application = applicationContext.getBean("Application", Application.class);
 		application.doTransfer();
-		((ConfigurableApplicationContext)applicationContext).close();
+		((ConfigurableApplicationContext) applicationContext).close();
 	}
 
 }
