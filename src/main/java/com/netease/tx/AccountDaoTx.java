@@ -1,4 +1,4 @@
-package com.netease;
+package com.netease.tx;
 
 import java.util.List;
 
@@ -6,9 +6,6 @@ import javax.sql.DataSource;
 
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.netease.tx.Account;
-import com.netease.tx.AccountDao;
 
 public class AccountDaoTx implements AccountDao {
 

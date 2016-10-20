@@ -16,6 +16,12 @@ public class MybatisSpringImpl implements TransferDAO {
 	public void transferMoney(Long srcUserId, Long targetUserId, Double count) {
 		// TODO Auto-generated method stub
 		userDAO.balanceSub(count, srcUserId);
+		try {
+			ex();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		userDAO.balanceAdd(count, targetUserId);
 	}
 

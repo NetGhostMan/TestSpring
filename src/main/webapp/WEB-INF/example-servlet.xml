@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"     
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"     
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xmlns:util="http://www.springframework.org/schema/util"
-   	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
    	   http://www.springframework.org/schema/beans/spring-beans.xsd
    	   http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd 
@@ -16,11 +14,47 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/util
-       http://www.springframework.org/schema/util/spring-util.xsd" >
+       http://www.springframework.org/schema/util/spring-util.xsd">
+	<!-- 设置使用注解的类所在的jar包 -->
+	<context:component-scan base-package="com.*" />
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<!-- Spring JDBC -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${DRIVER}"></property>
+		<property name="url" value="${DB_URL}"></property>
+		<property name="username" value="${USER}"></property>
+		<property name="password" value="${PASSWORD}"></property>
+	</bean>
+	<context:property-placeholder location="classpath:db.properties" />
+	
+	
 
-    
 
-    <!-- 设置使用注解的类所在的jar包 -->
-    <context:component-scan base-package="com.netease.course.web.controller" />
-   
+
+
+	<bean id="freemarkerConfig"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/freemarker"></property>
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="viewResolvers">
+			<list>
+				<bean id="viewResolver"
+					class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+					<property name="cache" value="true"></property>
+					<property name="prefix" value=""></property>
+					<property name="suffix" value=".ftl"></property>
+				</bean>
+			</list>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<bean
+					class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"></bean>
+			</list>
+		</property>
+	</bean>
 </beans>

@@ -23,7 +23,7 @@ public class FileWriterServiceImpl implements FileWriterService {
 	private OutputStreamWriter outputStreamWriter;
 	private FileOutputStream fileOutputStream;
 
-	//@PostConstruct
+	@PostConstruct
 	@Override
 	public void openFile() {
 		// TODO Auto-generated method stub
@@ -39,7 +39,7 @@ public class FileWriterServiceImpl implements FileWriterService {
 		System.out.println("服务已开启");
 	}
 
-	//@PreDestroy
+	@PreDestroy
 	@Override
 	public void closeFlie() {
 		// TODO Auto-generated method stub
@@ -61,12 +61,7 @@ public class FileWriterServiceImpl implements FileWriterService {
 
 	@Override
 	public void write(String content) {
-		// TODO Auto-generated method stub
-		openFile();
-		
 		printWriter.println(content);
-	
-		closeFlie();
 	}
 
 }

@@ -6,7 +6,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
-@Component("Application")
+@Component("ApplicatioMoney")
 public class Application {
 
 	@Autowired
@@ -25,7 +25,7 @@ public class Application {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-money.xml");
-		Application application = applicationContext.getBean("Application", Application.class);
+		Application application = applicationContext.getBean("ApplicatioMoney", Application.class);
 		application.doTransfer();
 		((ConfigurableApplicationContext) applicationContext).close();
 	}
